@@ -20,4 +20,10 @@ export class AccountService {
 
     return newAccount;
   }
+
+  getOneAccount(accountNumber: number) {
+    return this.accounts.find(
+      (savedAccount) => savedAccount.accountNumber === accountNumber,
+    );
+  }
 }
