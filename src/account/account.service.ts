@@ -26,4 +26,8 @@ export class AccountService {
       (savedAccount) => savedAccount.accountNumber === accountNumber,
     );
   }
+
+  getAccounts() {
+    return this.accounts;
+  }
 }

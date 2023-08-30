@@ -19,7 +19,7 @@ export class AccountController {
   }
 
   @Get(':accountNumber')
-  async getOneAccount(@Param('accountNumber') accountNumber: number) {
+  getOneAccount(@Param('accountNumber') accountNumber: number) {
     const account = this.accountService.getOneAccount(accountNumber);
 
     if (!account) {
@@ -27,5 +27,10 @@ export class AccountController {
     }
 
     return account;
+  }
+
+  @Get()
+  getAccounts() {
+    return this.accountService.getAccounts();
   }
 }
