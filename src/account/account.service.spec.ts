@@ -1,9 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { AccountService } from './account.service';
-import { AccountType } from './account.interface';
-import { CreateBankAccountInput } from './dto/create-account.dto';
-
-const testAccountNumber = '1234567890';
+import { testAccountNumber, testCreateAccountInput } from './constants.test';
 
 jest.mock('nanoid/async', () => ({
   customAlphabet: () => {
@@ -13,14 +10,6 @@ jest.mock('nanoid/async', () => ({
 
 describe('Account Service', () => {
   let accountService: AccountService;
-
-  const createInput: CreateBankAccountInput = {
-    firstName: 'John',
-    lastName: 'Doe',
-    dob: '2000-04-28',
-    accountType: AccountType.SAVINGS,
-    initialBalance: 10,
-  };
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
@@ -35,26 +24,26 @@ describe('Account Service', () => {
   });
 
   it('should create a new user', async () => {
-    const account = await accountService.createAccount(createInput);
+    const account = await accountService.createAccount(testCreateAccountInput);
     expect(account).toEqual({
-      ...createInput,
+      ...testCreateAccountInput,
       accountNumber: Number(testAccountNumber),
     });
   });
 
   it('should get one account', async () => {
-    await accountService.createAccount(createInput);
+    await accountService.createAccount(testCreateAccountInput);
 
     const account = accountService.getOneAccount(Number(testAccountNumber));
 
     expect(account).toEqual({
-      ...createInput,
+      ...testCreateAccountInput,
       accountNumber: Number(testAccountNumber),
     });
   });
 
   it('should not return any account for wrong account number', async () => {
-    await accountService.createAccount(createInput);
+    await accountService.createAccount(testCreateAccountInput);
 
     const account = accountService.getOneAccount(9087654321);
 
@@ -62,13 +51,13 @@ describe('Account Service', () => {
   });
 
   it('should return list of created accounts', async () => {
-    await accountService.createAccount(createInput);
+    await accountService.createAccount(testCreateAccountInput);
 
     const accounts = accountService.getAccounts();
 
     expect(accounts).toEqual([
       {
-        ...createInput,
+        ...testCreateAccountInput,
         accountNumber: Number(testAccountNumber),
       },
     ]);
