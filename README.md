@@ -36,7 +36,13 @@ After the packages have been installed start the application using the following
 yarn start
 ```
 
-## API Actions
+## Documentation
+
+You can use this link to access the postman collection documentation for this application: https://documenter.getpostman.com/view/10840074/2s9Y5crzTz
+
+## Deployement
+
+You can access the deployed application using the deployed link: https://bank-api-8lx6.onrender.com/
 
 ## Testing
 
