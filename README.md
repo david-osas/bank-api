@@ -4,7 +4,7 @@ This project contains code for a basic bank account management RESTful API. The 
 
 - Creating a bank account
 - Getting a bank account using an account number
-- Getting a list of all bank account
+- Getting a list of all bank accounts
 
 ## Project Setup
 
@@ -39,6 +39,8 @@ yarn start
 ## Documentation
 
 You can use this link to access the postman collection documentation for this application: https://documenter.getpostman.com/view/10840074/2s9Y5crzTz
+
+The documentation describes endpoints to use for creating a bank account, getting a bank account using an account number and getting a list of bank accounts
 
 ## Deployement
 
